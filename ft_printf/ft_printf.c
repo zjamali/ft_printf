@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:59:40 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/13 17:20:41 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/13 23:10:46 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void ft_inicialise(t_struct *strc, int n)
 		strc->flag[0] = '1';
 		strc->flag[1] = '1';
 		strc->min_width = -1;
-		strc->arg.d = 0;
+		strc->arg.str = NULL;
 }
 
 int ft_printf(const char *format, ...)
@@ -45,11 +45,12 @@ int ft_printf(const char *format, ...)
 	{
 		if (strc.format[strc.index] != '%')
 				ft_putchar(strc.format[strc.index],&strc.counter);
-		else if (strc.format[strc.index] == '%' && ft_strchr(".-0123456789*cspdiuxX%",strc.format[strc.index + 1]))
+		else if (strc.format[strc.index] == '%' && 
+				ft_strchr("0123456789*-+ .cspdiuxX%",strc.format[strc.index + 1]))
 		{
 			ft_inicialise(&strc,1);
 			strc.index += ft_parse_format(&strc.format[strc.index],&strc,&avlist);
-			printf("\n**************************************************\n");
+			/*printf("\n**************************************************\n");
 			printf("strc->counter {%d}\n",strc.counter);
 			printf("strc->format {%s}\n",strc.format);
 			printf("strc->convertion {%c}\n",strc.convertion);
@@ -60,10 +61,11 @@ int ft_printf(const char *format, ...)
 			printf("strc->len_arg {%d}\n",strc.len_arg);
 			printf("strc->lengh {%d}\n",strc.lengh);
 			printf("strc->flag {%c%c}\n",strc.flag[0],strc.flag[1]);
-			printf("*************************************************\n");
+			printf("*************************************************\n");*/
 			ft_printing(&strc);
 		}
 		strc.index++;
 	}
+	va_end(avlist);
 	return strc.counter;
 }

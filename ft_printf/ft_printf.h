@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 10:50:58 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/11 14:44:27 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/13 21:30:38 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_struct
 	t_arg arg;
 } 				t_struct;
 	/* PRINTING FUNCTIONS */
-void ft_printing(t_struct *strc);
+void	ft_printing(t_struct *strc);
 void	ft_putchar(char c, int *counter);
 void    ft_putstr(char *s, int *counter);
 void    ft_putnbr(int n, int *counter);
@@ -54,8 +54,16 @@ void    ft_putnbr_i(unsigned int n,int *counter);
 void    ft_putnbr_hexa(unsigned int n, int *counter, int xorX );
 void    ft_putnbr_address(long long  n, int *counter);
 
+	/* AFTER PARSE FUCTIONS printing fonctions*/
+void ft_print_s(t_struct *strc);
+void ft_print_c(t_struct *strc);
+void ft_putzeros(int nbr,int *counter);
+void ft_putspaces(int nbr,int *counter);
+void ft_print_convertion(t_struct *strc);
+
 	/* PARSING FUNCTIONS */
 int ft_parse_format(char *format, t_struct *strc,va_list *avlist);
+
 	/* UTILS FUNCTIONS */
 int             ft_atoi(const char *str);
 size_t      ft_strlen(const char *s);
