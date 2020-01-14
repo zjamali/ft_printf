@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:00:05 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/13 23:50:18 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/14 22:43:24 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@ int intlen(int nbr)
 {
 	int counter;
 
+	if (nbr == 0)
+		return 1;
 	counter = 0;
-	if(nbr < 0) //if nbr is negative
-		counter++;
+/*	if(nbr < 0) //if nbr is negative
+		counter++;*/
 	while(nbr != 0)
 	{
 		nbr /= 10;
@@ -30,9 +32,11 @@ int hexlen(long long nbr)
 {
 	int counter;
 
-	counter = 0;
+	if (nbr == 0)
+		return 1;
 
-	if (nbr != 0)
+	counter = 0;
+	while (nbr != 0)
 	{
 		nbr /= 16;
 		counter++;	
@@ -62,8 +66,9 @@ int ft_length(t_struct *strc)
 	else if (strc->convertion == '%')
 		leng = 1;
 	else if (strc->convertion == 'p')
-		leng = hexlen((long long)strc->arg.p) + 2; // 2 for len of 0x
-	if (strc->convertion == 'd' && strc->arg.d < 0)
+		leng = hexlen((long long)strc->arg.p);
+	if ((strc->convertion == 'd' && strc->arg.d < 0) ||
+			(strc->convertion == 'i' && strc->arg.i < 0))
 		strc->sign = 1; //// sign if int is negative
 	return leng;
 }
@@ -74,24 +79,16 @@ void ft_printing(t_struct *strc)
 	strc->len_arg = ft_length(strc); /// calcule the length of arguments
 	if (strc->convertion == 'c')
 		ft_print_c(strc);
-	if (strc->convertion == 's')
+	else if (strc->convertion == 's')
 		ft_print_s(strc);
-/*	else if (strc->convertion == 'd')
-		leng = intlen(strc->arg.d);
+	else if (strc->convertion == 'd')
+		ft_print_d(strc);
 	else if (strc->convertion == 'i')
-		leng = intlen(strc->arg.i);
-		*/
-	/*else if (strc->convertion == 'u')
+		ft_print_i(strc);
+	else if (strc->convertion == 'u')
 		ft_print_u(strc);
-	
-	else if (strc->convertion == 'x')
-		leng = hexlen((long long)strc->arg.x);
-	else if (strc->convertion == 'X')
-		leng = hexlen((long long)strc->arg.X);
-	else if (strc->convertion == '%')
-		leng = 1;
-	else if (strc->convertion == 'p')
-		leng = hexlen((long long)strc->arg.p) + 2; // 2 for len of 0x
-	if (strc->convertion == 'd' && strc->arg.d < 0)
-		strc->sign = 1; //// sign if int is negative*/
+	else if (strc->convertion == 'x' || strc->convertion == 'X')
+		ft_print_x(strc);
+	else if (strc->convertion == '%' || strc->convertion == 'p')
+		ft_print_p(strc);
 }

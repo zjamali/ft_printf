@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:07:27 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/13 23:43:08 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/14 14:15:55 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void ft_print_min_width(t_struct *strc)
 {
 	if (strc->flag[0] == '-' || strc->flag[1] == '-')
 	{
-		ft_print_convertion(strc);// need to get how much precision print
+		ft_print_convertion(strc);
 		ft_putspaces(strc->min_width - strc->lengh, &strc->counter);
 	}
 	else

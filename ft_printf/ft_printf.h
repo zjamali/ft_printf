@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 10:50:58 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/13 21:30:38 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/14 22:29:06 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_struct
 	int lengh;
 	char flag[2];
 	int min_width;
+	int addspace;
 	t_arg arg;
 } 				t_struct;
 	/* PRINTING FUNCTIONS */
@@ -57,6 +58,11 @@ void    ft_putnbr_address(long long  n, int *counter);
 	/* AFTER PARSE FUCTIONS printing fonctions*/
 void ft_print_s(t_struct *strc);
 void ft_print_c(t_struct *strc);
+void ft_print_p(t_struct *strc);
+void ft_print_u(t_struct *strc);
+void ft_print_x(t_struct *strc);
+void ft_print_d(t_struct *strc);
+void ft_print_i(t_struct *strc);
 void ft_putzeros(int nbr,int *counter);
 void ft_putspaces(int nbr,int *counter);
 void ft_print_convertion(t_struct *strc);

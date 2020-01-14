@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 21:37:38 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/13 23:14:23 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/14 21:20:19 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int				ft_parse_format(char *format, t_struct *strc, va_list *avlist)
 	i = 0;
 	while (format[i])
 	{
+			if (strc->addspace == 0 && format[1] == 32)
+			strc->addspace = 1;
 		ft_get_flags(&format[i], strc->flag); /// get flags
 		if (format[i] == '.') // if there is a point
 			strc->point[0] = '1';
