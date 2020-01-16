@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 21:37:38 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/15 20:49:25 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 17:46:50 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		ft_get_flags(char *format, char *flag)
 	static int	j;
 
 	i = 0;
-	if (j > 1)
+	if (j > 1 || (flag[0] == '1' && flag[1] == '1'))
 		j = 0;
 	if (flag[j] == '1' && (format[i] == '-' || format[i] == '0')
 			&& format[i] != flag[0] && format[i] != flag[1])
@@ -35,8 +35,12 @@ void			ft_get_arg_convertion(t_struct *strc, va_list *avlist)
 {
 	if (strc->convertion == 'c')
 		strc->arg.c = va_arg(*avlist, int);
-	else if (strc->convertion == 's' && strc->precision != 0) //printf not segf if "%10.s,5"
+	else if (strc->convertion == 's') //printf not segf if "%10.s,5"
+	{
 		strc->arg.str = va_arg(*avlist, char*);
+		if (strc->precision == 0)
+			strc->arg.str = NULL;
+	}
 	else if (strc->convertion == 'p')
 		strc->arg.p = va_arg(*avlist, long long);
 	else if (strc->convertion == 'd')

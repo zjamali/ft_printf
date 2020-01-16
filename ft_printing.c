@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:00:05 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 13:22:13 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 17:39:55 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ int ft_length(t_struct *strc)
 		leng = hexlen((long long)strc->arg.p);
 	if ((strc->convertion == 'd' && strc->arg.d < 0) ||
 			(strc->convertion == 'i' && strc->arg.i < 0))
+	{
+
 		strc->sign = 1; //// sign if int is negative
+	}
 	return leng;
 }
 void ft_printing(t_struct *strc)

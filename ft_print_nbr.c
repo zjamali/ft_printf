@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 14:45:17 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/15 20:55:38 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 16:14:36 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ft_putnbr(int n, int *counter)
 
 	if (n == -2147483648)
 	{
-		ft_putchar('-', counter);
+	//	ft_putchar('-', counter);
 		ft_putchar('2', counter);
 		n = 147483648;
 	}
 	
 	else if (n < 0)
 	{
-		ft_putchar('-', counter);
+	//	ft_putchar('-', counter);
 		n = -n;
 	}
 	if (n <= 9)
