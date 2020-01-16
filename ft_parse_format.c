@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 21:37:38 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 17:46:50 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:19:20 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void		ft_get_flags(char *format, char *flag)
 			flag[j++] = '0';
 		else if (format[i] == '-')
 			flag[j++] = format[i];
-		//printf("{{{%d}}\n",j);
 	}
 }
 
@@ -35,7 +34,7 @@ void			ft_get_arg_convertion(t_struct *strc, va_list *avlist)
 {
 	if (strc->convertion == 'c')
 		strc->arg.c = va_arg(*avlist, int);
-	else if (strc->convertion == 's') //printf not segf if "%10.s,5"
+	else if (strc->convertion == 's')//printf not segf if "%10.s,5"
 	{
 		strc->arg.str = va_arg(*avlist, char*);
 		if (strc->precision == 0)
@@ -63,10 +62,10 @@ static void		ft_get_precision(char *format, t_struct *strc, va_list *avlist)
 
 	i = 0;
 	if (ft_strchr("123456789*", format[i]) && (format[i - 1] != '.'
-				|| ft_strchr("0123456789*%", format[i - 1])))  // get min_with
+				|| ft_strchr("0123456789*%", format[i - 1])))// get min_with
 	{
 		if ((strc->min_width == -1) ||
-				(strc->min_width != -1 && format[i - 1]  == '*')) /// %10.*20 it take 20 a minimum widt
+				(strc->min_width != -1 && format[i - 1] == '*'))/// %10.*20 it take 20 a minimum widt
 		{
 			if (format[i] == '*')
 				strc->min_width = va_arg(*avlist, int);
@@ -85,23 +84,21 @@ int				ft_parse_format(char *format, t_struct *strc, va_list *avlist)
 	i = 0;
 	while (format[i])
 	{
-			if (strc->addspace == 0 && format[1] == 32)
-			strc->addspace = 1;
-		ft_get_flags(&format[i], strc->flag); /// get flags
-		if (format[i] == '.') // if there is a point
+		ft_get_flags(&format[i], strc->flag);/// get flags
+		if (format[i] == '.')// if there is a point
 			strc->point[0] = '1';
 		ft_get_precision(&format[i], strc, avlist);
-		if (format[i] == '.') // get precision 
+		if (format[i] == '.')// get precision
 		{
 			if (format[i + 1] == '*')
 				strc->precision = va_arg(*avlist, int);
 			else
 				strc->precision = ft_atoi(&format[i + 1]);
 		}
-		if (ft_strchr("cspdiuxX%", format[i]) && i != 0) /// i != 0 to don't get the first % 
+		if (ft_strchr("cspdiuxX%", format[i]) && i != 0)/// i != 0 to don't get the first %
 		{
 			strc->convertion = format[i];
-			ft_get_arg_convertion(strc, avlist); //get the arguments of converting 
+			ft_get_arg_convertion(strc, avlist);//get the arguments of converting
 			break ;
 		}
 		i++;

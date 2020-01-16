@@ -6,45 +6,43 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:00:05 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 17:39:55 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 18:42:36 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-int intlen(int nbr)
+
+static int	intlen(int nbr)
 {
 	int counter;
 
 	if (nbr == 0)
-		return 1;
+		return (1);
 	counter = 0;
-/*	if(nbr < 0) //if nbr is negative
-		counter++;*/
-	while(nbr != 0)
+	while (nbr != 0)
 	{
 		nbr /= 10;
 		counter++;
 	}
-	return counter;
+	return (counter);
 }
 
-int hexlen(long long nbr)
+static int	hexlen(long long nbr)
 {
 	int counter;
 
 	if (nbr == 0)
-		return 1;
-
+		return (1);
 	counter = 0;
 	while (nbr != 0)
 	{
 		nbr /= 16;
-		counter++;	
+		counter++;
 	}
-	return counter;
+	return (counter);
 }
 
-int ft_length(t_struct *strc)
+static int	ft_length(t_struct *strc)
 {
 	int leng;
 
@@ -69,15 +67,13 @@ int ft_length(t_struct *strc)
 		leng = hexlen((long long)strc->arg.p);
 	if ((strc->convertion == 'd' && strc->arg.d < 0) ||
 			(strc->convertion == 'i' && strc->arg.i < 0))
-	{
-
-		strc->sign = 1; //// sign if int is negative
-	}
-	return leng;
+		strc->sign = 1;
+	return (leng);
 }
-void ft_printing(t_struct *strc)
+
+void		ft_printing(t_struct *strc)
 {
-	if (strc->convertion == 's' && strc->arg.str == NULL) //// if arguments ==  NULL
+	if (strc->convertion == 's' && strc->arg.str == NULL)//// if arguments ==  NULL
 		strc->arg.str = "(null)";
 	strc->len_arg = ft_length(strc); /// calcule the length of arguments
 	if (strc->convertion == 'c')
@@ -87,7 +83,7 @@ void ft_printing(t_struct *strc)
 	else if (strc->convertion == 'd')
 		ft_print_d(strc);
 	else if (strc->convertion == 'i')
-		ft_print_d(strc); ////////////////////////////// change 
+		ft_print_d(strc);
 	else if (strc->convertion == 'u')
 		ft_print_u(strc);
 	else if (strc->convertion == 'x' || strc->convertion == 'X')

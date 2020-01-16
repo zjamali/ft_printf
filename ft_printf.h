@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 10:50:58 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 13:43:13 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 18:20:35 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_putchar(char c, int *counter);
 void    ft_putstr(char *s, int *counter);
 void    ft_putnbr(int n, int *counter);
 void    ft_putnbr_i(unsigned int n,int *counter);
-void    ft_putnbr_hexa(unsigned int n, int *counter, int xorX );
+void    ft_putnbr_hexa(unsigned int n, int *counter, int xorlx);
 void    ft_putnbr_address(long long  n, int *counter);
 	/* AFTER PARSE FUCTIONS printing fonctions*/
 void ft_print_s(t_struct *strc);
@@ -73,11 +73,8 @@ int ft_parse_format(char *format, t_struct *strc,va_list *avlist);
 	/* UTILS FUNCTIONS */
 int             ft_atoi(const char *str);
 size_t      ft_strlen(const char *s);
-char        *ft_strdup(const char *s1);
-char        *ft_strchr(const char *s, int c);
-int     ft_isalpha(int c);
-int     ft_isalnum(int c);
 
+char        *ft_strchr(const char *s, int c);
 
 int ft_printf(const char *format, ...);
 

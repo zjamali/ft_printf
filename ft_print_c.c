@@ -6,13 +6,13 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:07:27 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/14 14:15:55 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 18:16:07 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void ft_print_min_width(t_struct *strc)
+static void	ft_print_min_width(t_struct *strc)
 {
 	if (strc->flag[0] == '-' || strc->flag[1] == '-')
 	{
@@ -29,11 +29,11 @@ static void ft_print_min_width(t_struct *strc)
 	}
 }
 
-void	ft_print_c(t_struct *strc)
+void		ft_print_c(t_struct *strc)
 {
 	strc->lengh = 1;
 	if (strc->min_width == -1)
 		ft_print_convertion(strc);
-	else 
-		 ft_print_min_width(strc);
+	else
+		ft_print_min_width(strc);
 }

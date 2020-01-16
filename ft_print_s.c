@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 19:21:11 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/14 18:53:38 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/16 19:48:44 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,20 @@ static void	ft_print_precision(t_struct *strc)
 		ft_print_convertion(strc);
 	else if (strc->point[0] == '1' && strc->precision <= 0)
 		return ;
-	else if (strc->precision > strc->lengh  || strc->precision == -1)
+	else if (strc->precision > strc->lengh || strc->precision == -1)
 		ft_print_convertion(strc);
-	else if (strc->precision <= strc->lengh     && strc->precision >= 0)
+	else if (strc->precision <= strc->lengh && strc->precision >= 0)
 	{
 		while (strc->precision > i)
 			ft_putchar(strc->arg.str[i++], &strc->counter);
 	}
 }
+
 static void	ft_print_min_width(t_struct *strc)
 {
-	if (strc->flag[0] == '-' || strc->flag[1] == '-' /*|| strc->min_width > -1*/ )
+	if (strc->flag[0] == '-' || strc->flag[1] == '-')
 	{
-		ft_print_precision(strc); 
+		ft_print_precision(strc);
 		ft_putspaces(strc->min_width - strc->lengh, &strc->counter);
 	}
 	else
@@ -46,7 +47,7 @@ static void	ft_print_min_width(t_struct *strc)
 	}
 }
 
-void	ft_print_s(t_struct *strc)
+void		ft_print_s(t_struct *strc)
 {
 	if (strc->precision == -1 && strc->min_width == -1)
 		ft_print_convertion(strc);
@@ -58,11 +59,12 @@ void	ft_print_s(t_struct *strc)
 			strc->lengh = strc->len_arg;
 		else if (strc->precision <= -1)
 			strc->lengh = strc->len_arg;
-		if (strc->min_width <  -1)
+		if (strc->min_width < -1)
 		{
 			strc->min_width = -strc->min_width;
 			strc->flag[0] = '-';
 		}
-		strc->lengh >= strc->min_width ? ft_print_precision(strc) : ft_print_min_width(strc);
+		strc->lengh >= strc->min_width ? ft_print_precision(strc) :
+			ft_print_min_width(strc);
 	}
 }
