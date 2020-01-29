@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:12:22 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 19:45:07 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/29 21:56:20 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,23 @@ static void	ft_print_precision(t_struct *strc)
 {
 	ft_printsign(strc);
 	if (strc->precision <= -1 && strc->point[0] == '1')
-	{
 		ft_print_convertion(strc);
-	}
 	else if (strc->point[0] == '1' && strc->precision <= 0)
-		return ;
+	{
+		if (strc->arg.d == 0)
+			return ;
+		else
+			ft_print_convertion(strc);
+	}
 	else if (strc->precision > strc->len_arg || strc->precision == -1)
 	{
 		ft_putzeros(strc->precision - strc->len_arg, &strc->counter);
 		ft_print_convertion(strc);
 	}
 	else if (strc->precision <= strc->len_arg && strc->precision >= 0)
+	{
 		ft_print_convertion(strc);
+	}
 }
 
 static void	ft_print_min_width(t_struct *strc)
@@ -98,7 +103,7 @@ void		ft_print_d(t_struct *strc)
 			strc->sign_value = 1;
 			strc->arg.d < 0 ? strc->arg.d = -strc->arg.d : strc->arg.d;
 		}
-		strc->lengh >= strc->min_width ? ft_print_precision(strc) :
+		strc->lengh > strc->min_width ? ft_print_precision(strc) :
 			ft_print_min_width(strc);
 	}
 }

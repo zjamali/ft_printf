@@ -6,13 +6,28 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:00:05 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 18:42:36 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/29 21:54:59 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	intlen(int nbr)
+{
+	int counter;
+
+	if (nbr == 0)
+		return (1);
+	counter = 0;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		counter++;
+	}
+	return (counter);
+}
+
+static int	uintlen(unsigned int nbr)
 {
 	int counter;
 
@@ -56,11 +71,11 @@ static int	ft_length(t_struct *strc)
 	else if (strc->convertion == 'i')
 		leng = intlen(strc->arg.i);
 	else if (strc->convertion == 'u')
-		leng = intlen(strc->arg.u);
+		leng = uintlen(strc->arg.u);
 	else if (strc->convertion == 'x')
 		leng = hexlen((long long)strc->arg.x);
 	else if (strc->convertion == 'X')
-		leng = hexlen((long long)strc->arg.X);
+		leng = hexlen((long long)strc->arg.lx);
 	else if (strc->convertion == '%')
 		leng = 1;
 	else if (strc->convertion == 'p')

@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:47:28 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 15:57:31 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/21 19:36:00 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_print_convertion(t_struct *strc)
 	else if (strc->convertion == 'x')
 		ft_putnbr_hexa(strc->arg.x, &strc->counter, 0);
 	else if (strc->convertion == 'X')
-		ft_putnbr_hexa(strc->arg.x, &strc->counter, 1);
+		ft_putnbr_hexa(strc->arg.lx, &strc->counter, 1);
 	else if (strc->convertion == '%')
 		ft_putchar(strc->arg.percent, &strc->counter);
 	else if (strc->convertion == 'p')

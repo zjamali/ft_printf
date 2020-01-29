@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 21:37:38 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 19:19:20 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/21 19:34:47 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			ft_get_arg_convertion(t_struct *strc, va_list *avlist)
 	else if (strc->convertion == 'x')
 		strc->arg.x = va_arg(*avlist, unsigned int);
 	else if (strc->convertion == 'X')
-		strc->arg.X = va_arg(*avlist, unsigned int);
+		strc->arg.lx = va_arg(*avlist, unsigned int);
 	else if (strc->convertion == '%')
 		strc->arg.percent = '%';
 }

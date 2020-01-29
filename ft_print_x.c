@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:21:17 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/16 19:51:30 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/29 21:45:35 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ static void	ft_print_precision(t_struct *strc)
 	if (strc->precision <= -1 && strc->point[0] == '1')
 		ft_print_convertion(strc);
 	else if (strc->point[0] == '1' && strc->precision <= 0)
-		return ;
+	{
+		if (strc->arg.x != 0)
+			ft_print_convertion(strc);
+		else
+			return ;
+	}
 	else if (strc->precision > strc->len_arg || strc->precision == -1)
 	{
 		ft_putzeros(strc->precision - strc->len_arg, &strc->counter);
@@ -63,7 +68,7 @@ void		ft_print_x(t_struct *strc)
 			strc->min_width = -strc->min_width;
 			strc->flag[0] = '-';
 		}
-		strc->lengh >= strc->min_width ? ft_print_precision(strc) :
+		strc->lengh > strc->min_width ? ft_print_precision(strc) :
 			ft_print_min_width(strc);
 	}
 }
