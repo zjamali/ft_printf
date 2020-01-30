@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:12:22 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/29 21:56:20 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/30 16:26:41 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	ft_print_precision(t_struct *strc)
 
 static void	ft_print_min_width(t_struct *strc)
 {
-	if (strc->arg.u == 0 && strc->precision == 0)
+	if (strc->arg.d == 0 && strc->precision == 0)
 		strc->lengh = 0;
 	if (strc->flag[0] == '-' || strc->flag[1] == '-')
 	{

@@ -6,7 +6,7 @@
 /*   By: zjamali <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:00:05 by zjamali           #+#    #+#             */
-/*   Updated: 2020/01/29 21:54:59 by zjamali          ###   ########.fr       */
+/*   Updated: 2020/01/30 19:26:14 by zjamali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ static int	ft_length(t_struct *strc)
 
 void		ft_printing(t_struct *strc)
 {
-	if (strc->convertion == 's' && strc->arg.str == NULL)//// if arguments ==  NULL
+	if (strc->convertion == 's' && strc->arg.str == NULL)
 		strc->arg.str = "(null)";
-	strc->len_arg = ft_length(strc); /// calcule the length of arguments
+	strc->len_arg = ft_length(strc);
 	if (strc->convertion == 'c')
 		ft_print_c(strc);
 	else if (strc->convertion == 's')
