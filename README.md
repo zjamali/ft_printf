@@ -25,7 +25,7 @@ To compile with the repository main:
 ```
 gcc -Wall -Werror -Wextra main.c libftprintf.a 
 ```
-## some resource 
+## Resources
 https://www.cprogramming.com/tutorial/printf-format-strings.html
 https://www.geeksforgeeks.org/enumeration-enum-c/
 https://www.tutorialspoint.com/cprogramming/c_bitwise_operators.htm
